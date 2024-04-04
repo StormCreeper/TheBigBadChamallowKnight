@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqq4e57a0etao"]
+
+[ext_resource type="Texture2D" uid="uid://b2nrrg4l2xrm6" path="res://sprites/seamless-endless-industrial-game-environment-260nw-414303469.webp" id="1_3387d"]
+[ext_resource type="Texture2D" uid="uid://dtpof34ibfaxw" path="res://sprites/1a6d8880-25d1-11ea-995b-3727dbb55115.png" id="2_xac46"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5os3t"]
+albedo_color = Color(0.211765, 0.513726, 0.372549, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112, 1.6, 2.89)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(6.31227, 0, 0, 0, 1, 0, 0, 0, 3.38011, 0, 0, 0)
+material = SubResource("StandardMaterial3D_5os3t")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.937788, 0, 0, 0, 0.937788, 0, 0, 0, 0.937788, 0, 1.493, -1.285)
+texture = ExtResource("1_3387d")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.211, 0, 0, 0, 0.211, 0, 0, 0, 0.211, -0.293, 1.051, -0.899)
+texture = ExtResource("2_xac46")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.350571, 0, 0, 0, 0.304504, 0, 0, 0, 0.317025, 0.625023, 0.668668, -0.303359)
+size = Vector3(1.55579, 1.31848, 1)
+material = SubResource("StandardMaterial3D_5os3t")
