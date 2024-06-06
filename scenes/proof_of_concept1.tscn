@@ -88,10 +88,6 @@ material = SubResource("StandardMaterial3D_5os3t")
 transform = Transform3D(0.937788, 0, 0, 0, 0.937788, 0, 0, 0, 0.937788, 0, 1.493, -1.285)
 texture = ExtResource("1_3387d")
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(0.211, 0, 0, 0, 0.211, 0, 0, 0, 0.211, -0.293, 1.051, -0.899)
-texture = ExtResource("2_xac46")
-
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(0.350571, 0, 0, 0, 0.304504, 0, 0, 0, 0.317025, 0.625023, 0.668668, -0.303359)
 size = Vector3(1.55579, 1.31848, 1)
