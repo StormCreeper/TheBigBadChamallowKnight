@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqq4e57a0etao"]
+
+[ext_resource type="Texture2D" uid="uid://b2nrrg4l2xrm6" path="res://sprites/seamless-endless-industrial-game-environment-260nw-414303469.webp" id="1_3387d"]
+[ext_resource type="Texture2D" uid="uid://dtpof34ibfaxw" path="res://sprites/1a6d8880-25d1-11ea-995b-3727dbb55115.png" id="2_xac46"]
+[ext_resource type="Script" path="res://scenes/Player.gd" id="3_6fw3e"]
+[ext_resource type="Texture2D" uid="uid://dncp7vgljs7te" path="res://sprites/walk1.png" id="3_o1i4i"]
+[ext_resource type="Texture2D" uid="uid://cs0vqbf7yf48n" path="res://sprites/walk2.png" id="4_hm88i"]
+[ext_resource type="Texture2D" uid="uid://c8qsvol37aho5" path="res://sprites/walk3.png" id="5_4ljsm"]
+[ext_resource type="Texture2D" uid="uid://dwyk5xwwc1s2y" path="res://sprites/walk4.png" id="6_51dha"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5os3t"]
+albedo_color = Color(0.211765, 0.513726, 0.372549, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64cd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o1i4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hm88i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4ljsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_51dha")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112, 1.6, 2.89)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(6.31227, 0, 0, 0, 1, 0, 0, 0, 3.38011, 0, 0, 0)
+material = SubResource("StandardMaterial3D_5os3t")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.937788, 0, 0, 0, 0.937788, 0, 0, 0, 0.937788, 0, 1.493, -1.285)
+texture = ExtResource("1_3387d")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.211, 0, 0, 0, 0.211, 0, 0, 0, 0.211, -0.293, 1.051, -0.899)
+texture = ExtResource("2_xac46")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.350571, 0, 0, 0, 0.304504, 0, 0, 0, 0.317025, 0.625023, 0.668668, -0.303359)
+size = Vector3(1.55579, 1.31848, 1)
+material = SubResource("StandardMaterial3D_5os3t")
+
+[node name="Player" type="Node3D" parent="."]
+script = ExtResource("3_6fw3e")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 1.07465, 0)
+sprite_frames = SubResource("SpriteFrames_64cd0")

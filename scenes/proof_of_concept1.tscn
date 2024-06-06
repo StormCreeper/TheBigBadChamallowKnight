@@ -1,10 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqq4e57a0etao"]
+[gd_scene load_steps=16 format=3 uid="uid://bqq4e57a0etao"]
 
 [ext_resource type="Texture2D" uid="uid://b2nrrg4l2xrm6" path="res://sprites/seamless-endless-industrial-game-environment-260nw-414303469.webp" id="1_3387d"]
 [ext_resource type="Texture2D" uid="uid://dtpof34ibfaxw" path="res://sprites/1a6d8880-25d1-11ea-995b-3727dbb55115.png" id="2_xac46"]
+[ext_resource type="Script" path="res://scenes/Player.gd" id="3_6fw3e"]
+[ext_resource type="Texture2D" uid="uid://cd6i84nx0u2ep" path="res://sprites/Head/tete_milieu.png" id="4_y5afr"]
+[ext_resource type="Texture2D" uid="uid://fbfhihrrwv5s" path="res://sprites/Head/tete_bas.png" id="5_2lblh"]
+[ext_resource type="Texture2D" uid="uid://dq0b51u5pyd6g" path="res://sprites/Head/tete_haut.png" id="6_8rbmj"]
+[ext_resource type="Texture2D" uid="uid://dtwwmrnmefnuf" path="res://sprites/Body/jambes_still.png" id="7_rl23h"]
+[ext_resource type="Texture2D" uid="uid://cpk0wqsrvhh4" path="res://sprites/Body/jambes1.png" id="8_s6pcg"]
+[ext_resource type="Texture2D" uid="uid://b1l3cugqnc0ea" path="res://sprites/Body/jambes2.png" id="9_vyyqy"]
+[ext_resource type="Texture2D" uid="uid://c2q0lebni84d3" path="res://sprites/Body/jambes3.png" id="10_udtkt"]
+[ext_resource type="Texture2D" uid="uid://djjm5sihmo3ga" path="res://sprites/Body/jambes4.png" id="11_r15xw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5os3t"]
 albedo_color = Color(0.211765, 0.513726, 0.372549, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64cd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y5afr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2lblh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y5afr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8rbmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y5afr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxlcs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_rl23h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_s6pcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vyyqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_udtkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r15xw")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fot4"]
+size = Vector3(0.857155, 1.0185, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -12,7 +80,8 @@ albedo_color = Color(0.211765, 0.513726, 0.372549, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112, 1.6, 2.89)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(6.31227, 0, 0, 0, 1, 0, 0, 0, 3.38011, 0, 0, 0)
+transform = Transform3D(6.31227, 0, 0, 0, 1, 0, 0, 0, 3.38011, 0, -0.5, 0)
+use_collision = true
 material = SubResource("StandardMaterial3D_5os3t")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -27,3 +96,24 @@ texture = ExtResource("2_xac46")
 transform = Transform3D(0.350571, 0, 0, 0, 0.304504, 0, 0, 0, 0.317025, 0.625023, 0.668668, -0.303359)
 size = Vector3(1.55579, 1.31848, 1)
 material = SubResource("StandardMaterial3D_5os3t")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48727, 0)
+axis_lock_linear_z = true
+script = ExtResource("3_6fw3e")
+
+[node name="Head" type="AnimatedSprite3D" parent="Player"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, -0.0224042, 0.348753, 0)
+sorting_offset = 0.85
+sprite_frames = SubResource("SpriteFrames_64cd0")
+animation = &"idle"
+
+[node name="Body" type="AnimatedSprite3D" parent="Player"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, -0.0238605, 0.371422, 0)
+layers = 2
+sprite_frames = SubResource("SpriteFrames_xxlcs")
+animation = &"idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0223844, 0.517748, 0)
+shape = SubResource("BoxShape3D_0fot4")
