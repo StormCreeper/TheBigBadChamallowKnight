@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bqq4e57a0etao"]
+[gd_scene load_steps=33 format=3 uid="uid://bqq4e57a0etao"]
 
 [ext_resource type="Texture2D" uid="uid://chmm3jrqghf2g" path="res://sprites/background/sol_sombre.png" id="1_0t3v5"]
 [ext_resource type="Texture2D" uid="uid://b2nrrg4l2xrm6" path="res://sprites/seamless-endless-industrial-game-environment-260nw-414303469.webp" id="1_3387d"]
@@ -90,7 +90,8 @@ animations = [{
 }]
 
 [sub_resource type="Animation" id="Animation_bpjbj"]
-length = 0.001
+length = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -98,7 +99,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
@@ -110,7 +111,7 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
@@ -174,9 +175,70 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.460435), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_7hulr"]
+resource_name = "crosse_float_left"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.778925, -0.0338659, 0), Vector3(1.59172, 0.135466, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.135001), Vector3(0, 0, 0.293547)]
+}
+
+[sub_resource type="Animation" id="Animation_aivqo"]
+resource_name = "crosse_float_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.677328, -0.0338659, 0), Vector3(-1.52399, 0.135466, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.13439), Vector3(0, 0, -0.293215)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lm3yt"]
 _data = {
 "RESET": SubResource("Animation_bpjbj"),
+"crosse_float_left": SubResource("Animation_7hulr"),
+"crosse_float_right": SubResource("Animation_aivqo"),
 "crosse_swing": SubResource("Animation_nlf20"),
 "crosse_swing_back": SubResource("Animation_nhtjl")
 }
@@ -192,13 +254,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v2os0"]
+radius = 0.993476
+height = 12.0771
+
 [sub_resource type="Animation" id="Animation_i8378"]
 length = 0.001
 step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Stick:position")
+tracks/0/path = NodePath("Stick/sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -210,7 +276,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Stick:scale")
+tracks/1/path = NodePath("Stick/sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -222,7 +288,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Stick:rotation")
+tracks/2/path = NodePath("Stick/sprite:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -237,7 +303,7 @@ resource_name = "reset"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Stick:position")
+tracks/0/path = NodePath("Stick/sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -249,7 +315,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Stick:scale")
+tracks/1/path = NodePath("Stick/sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -266,7 +332,7 @@ step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Stick:position")
+tracks/0/path = NodePath("Stick/sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -278,7 +344,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Stick:rotation")
+tracks/1/path = NodePath("Stick/sprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -300,7 +366,7 @@ _data = {
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112, 1.6, 2.89)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="sol" type="CSGBox3D" parent="."]
 transform = Transform3D(6.31227, 0, 0, 0, 1, 0, 0, 0, 3.38011, 0, -0.5, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_5os3t")
@@ -354,9 +420,15 @@ libraries = {
 "": SubResource("AnimationLibrary_lm3yt")
 }
 
-[node name="Stick" type="AnimatedSprite3D" parent="Player/Weapon"]
+[node name="Stick" type="Area3D" parent="Player/Weapon"]
+
+[node name="sprite" type="AnimatedSprite3D" parent="Player/Weapon/Stick"]
 sprite_frames = SubResource("SpriteFrames_3ugt5")
 animation = &"crosse"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Weapon/Stick"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051595, 0.209865, 0)
+shape = SubResource("CapsuleShape3D_v2os0")
 
 [node name="animation" type="AnimationPlayer" parent="Player/Weapon/Stick"]
 root_node = NodePath("../..")
@@ -364,4 +436,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ucl4e")
 }
 
+[connection signal="idle" from="Player" to="Player/Weapon" method="_on_player_idle"]
+[connection signal="move_left" from="Player" to="Player/Weapon" method="_on_player_move_left"]
+[connection signal="move_right" from="Player" to="Player/Weapon" method="_on_player_move_right"]
 [connection signal="animation_finished" from="Player/Weapon/Stick/animation" to="Player/Weapon" method="_on_stick_animation_finished"]

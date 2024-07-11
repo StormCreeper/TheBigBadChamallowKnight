@@ -1,6 +1,11 @@
 extends CharacterBody3D
 
+signal idle
+signal move_left
+signal move_right
+
 var dir = 1;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Head.play()
@@ -45,9 +50,13 @@ func _process(delta):
 
 	var is_moving = get_real_velocity().length_squared();
 	if is_moving:
+		if dir<0 : move_left.emit() #signals the weapon to make the appropriate movement
+		else : move_right.emit()
+		
 		$Head.animation = "walk"
 		$Body.animation = "walk"
 	else:
+		idle.emit() #signals the weapon to make the appropriate movement
 		$Head.animation = "idle"
 		$Body.animation = "idle"
 
