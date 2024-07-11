@@ -15,16 +15,11 @@ func _process(delta):
 #called when the player wants to swing its stick -by pressing the S button when I'm writting this
 #The function has to move the stick but also deal with the cute movements of the dangle
 func swing():
-	if swing_finished :
+	if swing_finished : #the player cannot spam-click the swing
 		swing_finished = false
 		if $Dangle.animation == "crosse" :
 			$Dangle/animation.play("crosse_swing")
 		$Stick/animation.play("swing")
-
-
-func _on_dangle_animation_finished(anim_name):
-	if anim_name == "crosse_swing" :
-		$Dangle/animation.play("crosse_swing_back")
 
 
 func _on_stick_animation_finished(anim_name):
