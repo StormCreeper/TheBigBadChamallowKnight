@@ -57,3 +57,8 @@ func _process(delta):
 		#dir*=-1
 	#velocity.x = dir
 	#position = position + velocity*delta
+
+#traite les inputs du clavier
+func _input(event):
+	if event.is_action_pressed("swing_stick") and event.is_pressed() and not event.is_echo():
+		$Weapon.swing() #well, no need for explanations here, right ? For now, the "swing_stick" button is S

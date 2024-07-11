@@ -1,19 +1,23 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqq4e57a0etao"]
+[gd_scene load_steps=30 format=3 uid="uid://bqq4e57a0etao"]
 
+[ext_resource type="Texture2D" uid="uid://chmm3jrqghf2g" path="res://sprites/background/sol_sombre.png" id="1_0t3v5"]
 [ext_resource type="Texture2D" uid="uid://b2nrrg4l2xrm6" path="res://sprites/seamless-endless-industrial-game-environment-260nw-414303469.webp" id="1_3387d"]
-[ext_resource type="Texture2D" uid="uid://dtpof34ibfaxw" path="res://sprites/1a6d8880-25d1-11ea-995b-3727dbb55115.png" id="2_xac46"]
+[ext_resource type="Texture2D" uid="uid://dglydgphc4ujf" path="res://sprites/background/sombre.png" id="1_g3naa"]
 [ext_resource type="Script" path="res://scenes/Player.gd" id="3_6fw3e"]
-[ext_resource type="Texture2D" uid="uid://cd6i84nx0u2ep" path="res://sprites/Head/tete_milieu.png" id="4_y5afr"]
-[ext_resource type="Texture2D" uid="uid://fbfhihrrwv5s" path="res://sprites/Head/tete_bas.png" id="5_2lblh"]
-[ext_resource type="Texture2D" uid="uid://dq0b51u5pyd6g" path="res://sprites/Head/tete_haut.png" id="6_8rbmj"]
-[ext_resource type="Texture2D" uid="uid://dtwwmrnmefnuf" path="res://sprites/Body/jambes_still.png" id="7_rl23h"]
-[ext_resource type="Texture2D" uid="uid://cpk0wqsrvhh4" path="res://sprites/Body/jambes1.png" id="8_s6pcg"]
-[ext_resource type="Texture2D" uid="uid://b1l3cugqnc0ea" path="res://sprites/Body/jambes2.png" id="9_vyyqy"]
-[ext_resource type="Texture2D" uid="uid://c2q0lebni84d3" path="res://sprites/Body/jambes3.png" id="10_udtkt"]
-[ext_resource type="Texture2D" uid="uid://djjm5sihmo3ga" path="res://sprites/Body/jambes4.png" id="11_r15xw"]
+[ext_resource type="Texture2D" uid="uid://cd6i84nx0u2ep" path="res://sprites/knight/Head/tete_milieu.png" id="4_y5afr"]
+[ext_resource type="Texture2D" uid="uid://fbfhihrrwv5s" path="res://sprites/knight/Head/tete_bas.png" id="5_2lblh"]
+[ext_resource type="Texture2D" uid="uid://dq0b51u5pyd6g" path="res://sprites/knight/Head/tete_haut.png" id="6_8rbmj"]
+[ext_resource type="Texture2D" uid="uid://dtwwmrnmefnuf" path="res://sprites/knight/Body/jambes_still.png" id="7_rl23h"]
+[ext_resource type="Texture2D" uid="uid://cpk0wqsrvhh4" path="res://sprites/knight/Body/jambes1.png" id="8_s6pcg"]
+[ext_resource type="Texture2D" uid="uid://b1l3cugqnc0ea" path="res://sprites/knight/Body/jambes2.png" id="9_vyyqy"]
+[ext_resource type="Texture2D" uid="uid://c2q0lebni84d3" path="res://sprites/knight/Body/jambes3.png" id="10_udtkt"]
+[ext_resource type="Script" path="res://scenes/Weapon.gd" id="11_kya5q"]
+[ext_resource type="Texture2D" uid="uid://3uptqgk45ma7" path="res://sprites/sticks/crosse.png" id="11_paarh"]
+[ext_resource type="Texture2D" uid="uid://djjm5sihmo3ga" path="res://sprites/knight/Body/jambes4.png" id="11_r15xw"]
+[ext_resource type="Texture2D" uid="uid://c0et4dflwvsmi" path="res://sprites/sticks/crosse_dangle.png" id="12_eg8cu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5os3t"]
-albedo_color = Color(0.211765, 0.513726, 0.372549, 1)
+albedo_texture = ExtResource("1_0t3v5")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_64cd0"]
 animations = [{
@@ -74,7 +78,222 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fot4"]
 size = Vector3(0.857155, 1.0185, 1)
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfbsl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_eg8cu")
+}],
+"loop": false,
+"name": &"crosse",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_nlf20"]
+resource_name = "crosse_swing"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.658691, 1.2259, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.904971)]
+}
+
+[sub_resource type="Animation" id="Animation_bpjbj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nhtjl"]
+resource_name = "crosse_swing_back"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.659, 1.226, 0), Vector3(5.0183, -0.18297, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.905826), Vector3(0, 0, 0.460435), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lm3yt"]
+_data = {
+"RESET": SubResource("Animation_bpjbj"),
+"crosse_swing": SubResource("Animation_nlf20"),
+"crosse_swing_back": SubResource("Animation_nhtjl")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ugt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_paarh")
+}],
+"loop": false,
+"name": &"crosse",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_isntg"]
+resource_name = "swing"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.6587, -0.552898, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stick:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.345279), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c65dn"]
+resource_name = "reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stick:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i8378"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stick:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Stick:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucl4e"]
+_data = {
+"RESET": SubResource("Animation_i8378"),
+"reset": SubResource("Animation_c65dn"),
+"swing": SubResource("Animation_isntg")
+}
+
+[node name="Main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112, 1.6, 2.89)
@@ -84,17 +303,22 @@ transform = Transform3D(6.31227, 0, 0, 0, 1, 0, 0, 0, 3.38011, 0, -0.5, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_5os3t")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="background_usine" type="Sprite3D" parent="."]
 transform = Transform3D(0.937788, 0, 0, 0, 0.937788, 0, 0, 0, 0.937788, 0, 1.493, -1.285)
+visible = false
 texture = ExtResource("1_3387d")
+
+[node name="background_sombre" type="Sprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.023, 0.882941, -1.285)
+texture = ExtResource("1_g3naa")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(0.350571, 0, 0, 0, 0.304504, 0, 0, 0, 0.317025, 0.625023, 0.668668, -0.303359)
+visible = false
 size = Vector3(1.55579, 1.31848, 1)
 material = SubResource("StandardMaterial3D_5os3t")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48727, 0)
 axis_lock_linear_z = true
 script = ExtResource("3_6fw3e")
 
@@ -113,3 +337,30 @@ animation = &"idle"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0223844, 0.517748, 0)
 shape = SubResource("BoxShape3D_0fot4")
+
+[node name="Weapon" type="Node3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.4296, 1.2351, 2.32831e-10)
+script = ExtResource("11_kya5q")
+
+[node name="Dangle" type="AnimatedSprite3D" parent="Player/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_hfbsl")
+animation = &"crosse"
+
+[node name="animation" type="AnimationPlayer" parent="Player/Weapon/Dangle"]
+libraries = {
+"": SubResource("AnimationLibrary_lm3yt")
+}
+
+[node name="Stick" type="AnimatedSprite3D" parent="Player/Weapon"]
+sprite_frames = SubResource("SpriteFrames_3ugt5")
+animation = &"crosse"
+
+[node name="animation" type="AnimationPlayer" parent="Player/Weapon/Stick"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ucl4e")
+}
+
+[connection signal="animation_finished" from="Player/Weapon/Dangle/animation" to="Player/Weapon" method="_on_dangle_animation_finished"]
+[connection signal="animation_finished" from="Player/Weapon/Stick/animation" to="Player/Weapon" method="_on_stick_animation_finished"]
