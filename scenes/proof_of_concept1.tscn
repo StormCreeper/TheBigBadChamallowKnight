@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bqq4e57a0etao"]
+[gd_scene load_steps=33 format=3 uid="uid://bqq4e57a0etao"]
 
 [ext_resource type="Texture2D" uid="uid://chmm3jrqghf2g" path="res://sprites/background/sol_sombre.png" id="1_0t3v5"]
 [ext_resource type="Texture2D" uid="uid://b2nrrg4l2xrm6" path="res://sprites/seamless-endless-industrial-game-environment-260nw-414303469.webp" id="1_3387d"]
@@ -90,7 +90,7 @@ animations = [{
 }]
 
 [sub_resource type="Animation" id="Animation_bpjbj"]
-length = 0.1
+length = 0.001
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -99,7 +99,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
@@ -111,7 +111,7 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
@@ -132,7 +132,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.778925, -0.0338659, 0), Vector3(1.59172, 0.135466, 0)]
+"values": [Vector3(0.778925, -0.0338659, 0), Vector3(1.592, 0.338, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -161,7 +161,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.677328, -0.0338659, 0), Vector3(-1.52399, 0.135466, 0)]
+"values": [Vector3(-0.677328, -0.0338659, 0), Vector3(-1.524, 0.338, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -204,12 +204,41 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.904971), Vector3(0, 0, 0), Vector3(0, 0, 0.460767), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_x4tfb"]
+resource_name = "low_reset"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lm3yt"]
 _data = {
 "RESET": SubResource("Animation_bpjbj"),
 "crosse_float_left": SubResource("Animation_7hulr"),
 "crosse_float_right": SubResource("Animation_aivqo"),
-"crosse_swing": SubResource("Animation_nlf20")
+"crosse_swing": SubResource("Animation_nlf20"),
+"low_reset": SubResource("Animation_x4tfb")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3ugt5"]
@@ -266,32 +295,17 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_c65dn"]
-resource_name = "reset"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Stick/sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stick:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Stick/sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_isntg"]
@@ -323,11 +337,28 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.345279), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_wsaww"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.203198, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ucl4e"]
 _data = {
 "RESET": SubResource("Animation_i8378"),
-"reset": SubResource("Animation_c65dn"),
-"swing": SubResource("Animation_isntg")
+"swing": SubResource("Animation_isntg"),
+"walk": SubResource("Animation_wsaww")
 }
 
 [node name="Main" type="Node3D"]
@@ -407,6 +438,4 @@ libraries = {
 [connection signal="idle" from="Player" to="Player/Weapon" method="_on_player_idle"]
 [connection signal="move_left" from="Player" to="Player/Weapon" method="_on_player_move_left"]
 [connection signal="move_right" from="Player" to="Player/Weapon" method="_on_player_move_right"]
-[connection signal="animation_finished" from="Player/Weapon/Dangle/animation" to="Player/Weapon" method="_on_Dangle_animation_finished"]
-[connection signal="animation_started" from="Player/Weapon/Dangle/animation" to="Player/Weapon" method="_on_Dangle_animation_started"]
 [connection signal="animation_finished" from="Player/Weapon/Stick/animation" to="Player/Weapon" method="_on_stick_animation_finished"]

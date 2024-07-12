@@ -31,15 +31,15 @@ func _on_stick_animation_finished(anim_name):
 #handles the movements while the walk of the player
 func _on_player_idle():
 	if swing_finished :
-		$Dangle/animation.play("RESET")
+		$Dangle/animation.play("low_reset")
+		$Stick/animation.play("RESET")
 func _on_player_move_left():
-	if stickType == "crosse" :
-		$Dangle/animation.play("crosse_float_left")
+	if swing_finished :
+		$Stick/animation.play("walk")
+		if stickType == "crosse" :
+			$Dangle/animation.play("crosse_float_left")
 func _on_player_move_right():
-	if stickType == "crosse" :
-		$Dangle/animation.play("crosse_float_right")
-
-
-
-func _on_Dangle_animation_started(anim_name):
-	if anim_name != "RESET" : print(anim_name)
+	if swing_finished :
+		$Stick/animation.play("walk")
+		if stickType == "crosse" :
+			$Dangle/animation.play("crosse_float_right")
