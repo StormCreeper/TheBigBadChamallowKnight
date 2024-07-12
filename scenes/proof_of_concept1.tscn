@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bqq4e57a0etao"]
+[gd_scene load_steps=32 format=3 uid="uid://bqq4e57a0etao"]
 
 [ext_resource type="Texture2D" uid="uid://chmm3jrqghf2g" path="res://sprites/background/sol_sombre.png" id="1_0t3v5"]
 [ext_resource type="Texture2D" uid="uid://b2nrrg4l2xrm6" path="res://sprites/seamless-endless-industrial-game-environment-260nw-414303469.webp" id="1_3387d"]
@@ -117,64 +117,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_nlf20"]
-resource_name = "crosse_swing"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.1, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.36988, 1.4291, 0), Vector3(3.47301, -0.941548, 0), Vector3(5.018, -0.183, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.1, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.904971), Vector3(0, 0, 0), Vector3(0, 0, 0.460767), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_nhtjl"]
-resource_name = "crosse_swing_back"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(3.473, -0.942, 0), Vector3(5.0183, -0.18297, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.460435), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_7hulr"]
 resource_name = "crosse_float_left"
 length = 0.4
@@ -234,13 +176,40 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, -0.13439), Vector3(0, 0, -0.293215)]
 }
 
+[sub_resource type="Animation" id="Animation_nlf20"]
+resource_name = "crosse_swing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.1, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.36988, 1.4291, 0), Vector3(3.47301, -0.941548, 0), Vector3(5.018, -0.183, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.1, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.904971), Vector3(0, 0, 0), Vector3(0, 0, 0.460767), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lm3yt"]
 _data = {
 "RESET": SubResource("Animation_bpjbj"),
 "crosse_float_left": SubResource("Animation_7hulr"),
 "crosse_float_right": SubResource("Animation_aivqo"),
-"crosse_swing": SubResource("Animation_nlf20"),
-"crosse_swing_back": SubResource("Animation_nhtjl")
+"crosse_swing": SubResource("Animation_nlf20")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3ugt5"]
@@ -411,7 +380,6 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.4296, 1.2351, 2.32831
 script = ExtResource("11_kya5q")
 
 [node name="Dangle" type="AnimatedSprite3D" parent="Player/Weapon"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_hfbsl")
 animation = &"crosse"
 
@@ -439,4 +407,6 @@ libraries = {
 [connection signal="idle" from="Player" to="Player/Weapon" method="_on_player_idle"]
 [connection signal="move_left" from="Player" to="Player/Weapon" method="_on_player_move_left"]
 [connection signal="move_right" from="Player" to="Player/Weapon" method="_on_player_move_right"]
+[connection signal="animation_finished" from="Player/Weapon/Dangle/animation" to="Player/Weapon" method="_on_Dangle_animation_finished"]
+[connection signal="animation_started" from="Player/Weapon/Dangle/animation" to="Player/Weapon" method="_on_Dangle_animation_started"]
 [connection signal="animation_finished" from="Player/Weapon/Stick/animation" to="Player/Weapon" method="_on_stick_animation_finished"]
