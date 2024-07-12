@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dncp7vgljs7te"
-path.s3tc="res://.godot/imported/walk1.png-f798fb8a265c6f39fe96f43b98a2e036.s3tc.ctex"
+uid="uid://b2nrrg4l2xrm6"
+path.s3tc="res://.godot/imported/seamless-endless-industrial-game-environment-260nw-414303469.webp-46a80252d0d206aa51ce58ce378e1294.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/walk1.png"
-dest_files=["res://.godot/imported/walk1.png-f798fb8a265c6f39fe96f43b98a2e036.s3tc.ctex"]
+source_file="res://sprites/background/seamless-endless-industrial-game-environment-260nw-414303469.webp"
+dest_files=["res://.godot/imported/seamless-endless-industrial-game-environment-260nw-414303469.webp-46a80252d0d206aa51ce58ce378e1294.s3tc.ctex"]
 
 [params]
 

@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs0vqbf7yf48n"
-path="res://.godot/imported/walk2.png-b5a311c66554e4e9b2c9903917fd2e56.ctex"
+uid="uid://dwirmhebn3sgf"
+path.s3tc="res://.godot/imported/baluchon_dangle.png-82256eba177f0e017e322b4581a6389b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://sprites/walk2.png"
-dest_files=["res://.godot/imported/walk2.png-b5a311c66554e4e9b2c9903917fd2e56.ctex"]
+source_file="res://sprites/sticks/baluchon_dangle.png"
+dest_files=["res://.godot/imported/baluchon_dangle.png-82256eba177f0e017e322b4581a6389b.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
