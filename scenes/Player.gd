@@ -43,7 +43,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	dir = 1 if get_real_velocity().x>0 else -1
 	$Head.flip_h = dir<0;
 	$Body.flip_h = dir<0;
