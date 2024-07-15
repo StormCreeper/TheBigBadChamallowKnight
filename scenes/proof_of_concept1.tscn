@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://bqq4e57a0etao"]
+[gd_scene load_steps=35 format=3 uid="uid://bqq4e57a0etao"]
 
 [ext_resource type="Texture2D" uid="uid://chmm3jrqghf2g" path="res://sprites/background/sol_sombre.png" id="1_0t3v5"]
 [ext_resource type="Texture2D" uid="uid://b2nrrg4l2xrm6" path="res://sprites/seamless-endless-industrial-game-environment-260nw-414303469.webp" id="1_3387d"]
 [ext_resource type="Texture2D" uid="uid://dglydgphc4ujf" path="res://sprites/background/sombre.png" id="1_g3naa"]
+[ext_resource type="Script" path="res://scenes/FollowCamera.gd" id="1_qyuim"]
 [ext_resource type="Script" path="res://scenes/Player.gd" id="3_6fw3e"]
 [ext_resource type="Texture2D" uid="uid://cd6i84nx0u2ep" path="res://sprites/Head/tete_milieu.png" id="4_y5afr"]
 [ext_resource type="Texture2D" uid="uid://fbfhihrrwv5s" path="res://sprites/Head/tete_bas.png" id="5_2lblh"]
@@ -15,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://3uptqgk45ma7" path="res://sprites/sticks/crosse.png" id="11_paarh"]
 [ext_resource type="Texture2D" uid="uid://djjm5sihmo3ga" path="res://sprites/Body/jambes4.png" id="11_r15xw"]
 [ext_resource type="Texture2D" uid="uid://c0et4dflwvsmi" path="res://sprites/sticks/crosse_dangle.png" id="12_eg8cu"]
+[ext_resource type="PackedScene" uid="uid://b0mp65c3a041a" path="res://scenes/Walls/Inivisible_Wall.tscn" id="16_g086l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5os3t"]
 albedo_texture = ExtResource("1_0t3v5")
@@ -365,19 +367,22 @@ _data = {
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112, 1.6, 2.89)
+script = ExtResource("1_qyuim")
 
 [node name="sol" type="CSGBox3D" parent="."]
 transform = Transform3D(6.31227, 0, 0, 0, 1, 0, 0, 0, 3.38011, 0, -0.5, 0)
+layers = 2
 use_collision = true
+collision_layer = 2
 material = SubResource("StandardMaterial3D_5os3t")
 
 [node name="background_usine" type="Sprite3D" parent="."]
-transform = Transform3D(0.937788, 0, 0, 0, 0.937788, 0, 0, 0, 0.937788, 0, 1.493, -1.285)
+transform = Transform3D(0.937788, 0, 0, 0, 0.937788, 0, 0, 0, 0.937788, 0, 1.493, -1.7)
 visible = false
 texture = ExtResource("1_3387d")
 
 [node name="background_sombre" type="Sprite3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.023, 0.882941, -1.285)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 2, -1.7)
 texture = ExtResource("1_g3naa")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
@@ -387,7 +392,7 @@ size = Vector3(1.55579, 1.31848, 1)
 material = SubResource("StandardMaterial3D_5os3t")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-axis_lock_linear_z = true
+collision_mask = 2
 script = ExtResource("3_6fw3e")
 
 [node name="Head" type="AnimatedSprite3D" parent="Player"]
@@ -434,6 +439,14 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_ucl4e")
 }
+
+[node name="InivisibleWall" parent="." instance=ExtResource("16_g086l")]
+transform = Transform3D(6.35796, 0, 0, 0, 3.1896, 0, 0, 0, 1, 0, 1.32381, -2.17767)
+visible = false
+
+[node name="InivisibleWall2" parent="." instance=ExtResource("16_g086l")]
+transform = Transform3D(6.35796, 0, 0, 0, 3.1896, 0, 0, 0, 1, 0, 1.32381, 2.1825)
+visible = false
 
 [connection signal="idle" from="Player" to="Player/Weapon" method="_on_player_idle"]
 [connection signal="move_left" from="Player" to="Player/Weapon" method="_on_player_move_left"]
