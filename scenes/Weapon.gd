@@ -1,11 +1,16 @@
 extends Node3D
 
 @onready var swing_finished = true #used to prevent the player to swing to quickly, "breaking" the animations
-@onready var stickType = "crosse"
+@onready var stickType = "baluchon"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if stickType == "crosse":
+		$Dangle.play("crosse")
+		$Stick/sprite.play("crosse")
+	if stickType == "baluchon":
+		$Dangle.play("baluchon")
+		$Stick/sprite.play("baluchon")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +23,9 @@ func swing():
 	if swing_finished : #the player cannot spam-click the swing
 		swing_finished = false
 		if stickType == "crosse" :
-			$Dangle/animation.play("crosse_swing") #WHY DOESN'T IT SWING ???
+			$Dangle/animation.play("crosse_swing") 
+		if stickType == "baluchon" :
+			$Dangle/animation.play("crosse_swing")
 		$Stick/animation.play("swing")
 
 
@@ -38,8 +45,12 @@ func _on_player_move_left():
 		$Stick/animation.play("walk")
 		if stickType == "crosse" :
 			$Dangle/animation.play("crosse_float_left")
+		if stickType == "baluchon" :
+			$Dangle/animation.play("crosse_float_left")
 func _on_player_move_right():
 	if swing_finished :
 		$Stick/animation.play("walk")
 		if stickType == "crosse" :
+			$Dangle/animation.play("crosse_float_right")
+		if stickType == "baluchon" :
 			$Dangle/animation.play("crosse_float_right")
